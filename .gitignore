@@ -1,6 +1,5 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python
-# Edit by jmo.py
+# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python,venv,virtualenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,python,venv,virtualenv
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
@@ -119,6 +118,7 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
+TODO-App/
 TODO-App/*
 
 # Spyder project settings
@@ -151,6 +151,23 @@ Thumbs.db
 # profiling data
 .prof
 
+
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 
 ### VisualStudioCode ###
 .vscode/*
@@ -190,4 +207,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-#
+# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,python,venv,virtualenv
