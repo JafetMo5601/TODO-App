@@ -1,10 +1,11 @@
 from . import loginBP
-# from app.data import todoDB
+from app.data import todoDB
 from flask_json import json_response
 
 
-@loginBP.route("/admin/", methods=["GET"])
+@loginBP.route("/login/", methods=["GET"])
 def login():
+    response = 'Login'
     return json_response(
-        response="Hi Admin", headers={"Content-Type": "application/json"}
+        response=response, headers={"Content-Type": "application/json"}
     )
