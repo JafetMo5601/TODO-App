@@ -1,0 +1,28 @@
+<div class='card-body'>
+    <div class='row'>
+        <div class='col-md-4'>
+            <input type='text'
+                [(ngModel)]='tasksFilter'/>
+        </div>
+    </div>
+    <div class='row' *ngIf='tasksFilter'>
+    </div>
+    <div class='table-responsive' *ngIf="tasks.length">
+        <div class='table'>
+            <table class='table'>
+                <thead class="table-primary">
+                    <tr>
+                        <th>Task Status</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let task of tasks'>
+                        <td>{{ task.taskDescription }}</td>
+                        <td>{{ task.statusId }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

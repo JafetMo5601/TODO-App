@@ -1,0 +1,17 @@
+* {
+  background: #003f88;
+  color: #ffffff !important;
+}
+
+div .container {
+  padding: 20px 0;
+}
+
+#nav-icons {
+  font-size: 1.7rem;
+}
+
+#nav-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
