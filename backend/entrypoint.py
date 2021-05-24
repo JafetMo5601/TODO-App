@@ -1,5 +1,11 @@
-from app import createApp
 import os
 
-app = createApp()
-app.run(port=5000, threaded=True, debug=(os.environ.get("DEBUG") == "True"))
+from app import create_app
+
+
+config_name = "development"  # = os.environ.get('FLASK_CONFIG')
+app = create_app(config_name)
+
+
+if __name__ == "__main__":
+    app.run(port=5000, threaded=True)

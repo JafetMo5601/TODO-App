@@ -5,21 +5,23 @@ import json
 class Requests:
     def __init__(self):
         self.mysql = mysql
-        self.cur = self.mysql.connection.cursor()
-
+        self.conn = self.mysql.connection
+        self.cur = self.conn.cursor()
+    
     def dataProcessing(self, rv):
-        data, row_headers = [], [x[0] for x in self.cur.description]
-        for result in rv:
-            data.append(dict(zip(row_headers, result)))
-        self.cur.close()
-
+        if rv != ():
+            data, row_headers = [], [x[0] for x in self.cur.description]
+            for result in rv:
+                data.append(dict(zip(row_headers, result)))
+        else:
+            data = 'Executed correctly!'
         return data
 
     def query(self, sp):
         self.cur.execute("CALL " + sp + ";")
-        rv = self.cur.fetchall()
-        json_data = self.dataProcessing(rv)
-
+        json_data = self.dataProcessing(self.cur.fetchall())
+        self.cur.close()
+        self.conn.commit()
         return json_data
 
 
