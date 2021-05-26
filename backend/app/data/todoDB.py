@@ -55,7 +55,7 @@ def entireTasksRetrieve():
 
 def priorityAdd(priorityName):
     requests = Requests()
-    request = requests.query("spPriorityAdd(NULL, '" + str(priorityName) + "')")
+    request = requests.query("spPriorityAdd('" + str(priorityName) + "')")
     return request
 
 
@@ -67,7 +67,7 @@ def priorityRetrieve(priorityId):
 
 def statusAdd(statusName):
     requests = Requests()
-    request = requests.query("spStatusTypeAdd(NULL, '" + str(statusName) + "')")
+    request = requests.query("spStatusTypeAdd('" + str(statusName) + "')")
     return request
 
 
@@ -79,7 +79,7 @@ def statusRetrieve(statusId):
 
 def tagAdd(tagName):
     requests = Requests()
-    request = requests.query("spTagsAdd(NULL, '" + str(tagName) + "')")
+    request = requests.query("spTagsAdd('" + str(tagName) + "')")
     return request
 
 
@@ -92,7 +92,7 @@ def tagRetrieve(tagId):
 def taskAdd(taskDescription, taskTypeId, statusId, priorityId, tagId):
     requests = Requests()
     request = requests.query(
-        "spTaskAdd( NULL, '"
+        "spTaskAdd('"
         + str(taskDescription)
         + "' ,"
         + str(taskTypeId)
@@ -123,7 +123,7 @@ def taskRetrieve(taskId):
 
 def taskTypeAdd(taskTypeName):
     requests = Requests()
-    request = requests.query("spTasksTypesAdd(NULL, '" + str(taskTypeName) + "')")
+    request = requests.query("spTasksTypesAdd('" + str(taskTypeName) + "')")
     return request
 
 
