@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { element } from 'protractor';
+import { Component } from '@angular/core';
+
 import { slideInAnimation } from './animations/animations';
 
 @Component({
