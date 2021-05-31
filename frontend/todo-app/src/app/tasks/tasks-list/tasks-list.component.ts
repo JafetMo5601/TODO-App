@@ -1,7 +1,7 @@
-import { Task } from '../../interfaces/task';
-import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
+import { Component, OnInit } from '@angular/core';
 
+import { Task } from '../../interfaces/task';
 
 @Component({
   templateUrl: './tasks-list.component.html',
@@ -50,6 +50,9 @@ export class TasksListComponent implements OnInit {
 
   getTasks(): void {
     this.taskService.getTasks()
-      .subscribe((tasks: any) => (this.generateTasksList(tasks)));
+    .subscribe(
+      (tasks: any) => (this.generateTasksList(tasks)),
+      (error) => console.log(error)
+      );
   }
 }

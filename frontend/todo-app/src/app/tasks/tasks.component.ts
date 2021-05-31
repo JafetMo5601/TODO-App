@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TasksService } from './tasks.service';
+
+import { TaskService } from '../services/task.service';
 
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css'],
-  providers: [TasksService]
+  providers: [TaskService]
 })
 export class TasksComponent implements OnInit {
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private tasksService: TaskService) { }
 
   ngOnInit() {
   }

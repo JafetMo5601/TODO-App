@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
-import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
-import { CreateTaskComponent } from './tasks/create-task/create-task.component';
-import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { NgModule } from '@angular/core';
 
+import { CreateTaskComponent } from './tasks/create-task/create-task.component';
+import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
 
 const routes: Routes = [
   {
