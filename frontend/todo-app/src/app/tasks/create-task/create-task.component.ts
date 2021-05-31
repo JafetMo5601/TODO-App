@@ -1,13 +1,29 @@
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
+import { TaskService } from 'src/app/services/task.service';
+import { Task } from 'src/app/interfaces/task';
+import { MatChip } from '@angular/material/chips';
 
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
-  styleUrls: ['./create-task.component.css']
+  styleUrls: ['./create-task.component.css'],
 })
 export class CreateTaskComponent implements OnInit {
+
+  descriptionText: string = 'Put in here what do you have to do?';
+  placeholder: string = 'Describe your task';
+  statusText: string = 'How it is going?';
+  hide: boolean = false;
+
+  taskDescription = new FormControl('', Validators.required);
+  statusId = new FormControl('');
+  taskTypeId = new FormControl('');
+  priorityId = new FormControl('');
+  tagId = new FormControl('');
 
   priorities = [
     {
@@ -97,19 +113,44 @@ export class CreateTaskComponent implements OnInit {
     }
   ];
 
-  newTaskGroup = new FormGroup({
-    description: new FormControl('', Validators.required),
-    status: new FormControl(this.statusList),
-    taskType: new FormControl(''),
-    priority: new FormControl(''),
-    tag: new FormControl('')
-  });
-  constructor() { }
+  tasksAddUrl = 'http://127.0.0.1:5000/tasks/add/';
+
+  newTaskGroup: FormGroup;
+
+  constructor(
+    private taskService: TaskService,
+    private http: HttpClient,
+    public fb: FormBuilder
+    ) {
+      this.newTaskGroup = this.fb.group({
+        taskDescription: this.taskDescription,
+        statusId: this.statusId,
+        taskTypeId: this.taskTypeId,
+        priorityId: this.priorityId,
+        tagId: this.tagId
+      });
+    }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    console.warn(this.newTaskGroup.value);
+  submitForm(newTask: Task): void {
+    console.log(newTask);
+    // this.taskService.addTask(newTask)
+    // .subscribe(
+    //   (response) => console.log(response),
+    //   (error) => this.taskService.handleError(error)
+    //   );
   }
+
+  tagSelection(chip: MatChip) {
+    chip.toggleSelected();
+    this.newTaskGroup.controls['tagId'].setValue(chip.value);
+  }
+
+  onSubmit(): void {
+    this.submitForm(this.newTaskGroup.value);
+  }
+
+  
 }
