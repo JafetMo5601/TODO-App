@@ -1,5 +1,5 @@
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,23 +7,23 @@ import { TaskService } from 'src/app/services/task.service';
 import { Task } from 'src/app/interfaces/task';
 import { MatChip } from '@angular/material/chips';
 
+
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.css'],
 })
-export class CreateTaskComponent implements OnInit {
+export class CreateTaskComponent {
+
+  tasksAddUrl = 'http://127.0.0.1:5000/tasks/add/';
 
   descriptionText: string = 'Put in here what do you have to do?';
-  placeholder: string = 'Describe your task';
   statusText: string = 'How it is going?';
+  placeholder: string = 'Describe your task';
+
   hide: boolean = false;
 
-  taskDescription = new FormControl('', Validators.required);
-  statusId = new FormControl('');
-  taskTypeId = new FormControl('');
-  priorityId = new FormControl('');
-  tagId = new FormControl('');
+  newTaskForm: FormGroup;
 
   priorities = [
     {
@@ -41,26 +41,11 @@ export class CreateTaskComponent implements OnInit {
   ];
 
   statusList = [
-    {
-      'id': 1,
-      'name': 'Completed'
-    },
-    {
-      'id': 2,
-      'name': 'In progress'
-    },
-    {
-      'id': 3,
-      'name': 'Planning'
-    },
-    {
-      'id': 4,
-      'name': 'Not started'
-    },
-    {
-      'id': 5,
-      'name': 'Blocked'
-    }
+    {value: 1, label: 'Completed'},
+    {value: 2, label: 'In progress'},
+    {value: 3, label: 'Planning'},
+    {value: 4, label: 'Not started'},
+    {value: 5, label: 'Blocked'}
   ];
 
   tags = [
@@ -113,26 +98,26 @@ export class CreateTaskComponent implements OnInit {
     }
   ];
 
-  tasksAddUrl = 'http://127.0.0.1:5000/tasks/add/';
+  taskDescription = new FormControl('', Validators.required);
+  statusId = new FormControl('');
+  taskTypeId = new FormControl('');
+  priorityId = new FormControl('');
+  tagId = new FormControl('');
 
-  newTaskGroup: FormGroup;
+  // newTaskGroup: FormGroup;
 
   constructor(
     private taskService: TaskService,
     private http: HttpClient,
-    public fb: FormBuilder
-    ) {
-      this.newTaskGroup = this.fb.group({
+    public fb: FormBuilder) {
+      this.newTaskForm = this.fb.group({
         taskDescription: this.taskDescription,
         statusId: this.statusId,
         taskTypeId: this.taskTypeId,
         priorityId: this.priorityId,
         tagId: this.tagId
-      });
+      });      
     }
-
-  ngOnInit(): void {
-  }
 
   submitForm(newTask: Task): void {
     console.log(newTask);
@@ -145,12 +130,11 @@ export class CreateTaskComponent implements OnInit {
 
   tagSelection(chip: MatChip) {
     chip.toggleSelected();
-    this.newTaskGroup.controls['tagId'].setValue(chip.value);
+    // this.newTaskGroup.controls['tagId'].setValue(chip.value);
   }
 
   onSubmit(): void {
-    this.submitForm(this.newTaskGroup.value);
+    // this.submitForm(this.taskInProgress);
   }
-
   
 }

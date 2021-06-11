@@ -48,6 +48,23 @@ label{
   display: contents;
 }
 
+.containter {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#create-task-1 .create-task-1 {
+  flex-direction: column-reverse;
+  text-align: center;
+  margin: 0 auto;
+  /* height: 100%; */
+}
+
+#create-task-2 .create-task-2 {
+  flex-direction: column;
+}
 /* .form-group#description-group {
   text-align: center;
   align-items: center;
