@@ -1,6 +1,18 @@
 * {
-  background: #003f88;
+  /* background: white; */
   color: #ffffff !important;
+}
+
+content-xd {
+  background: #fff;
+}
+
+nav {
+  background: #003f88;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  padding: 2% 5%;
 }
 
 div .container {

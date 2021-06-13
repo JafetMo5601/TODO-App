@@ -1,143 +1,93 @@
-<div class="container">
-    <form class="text-center" style="color: #757575;" [formControl]="newTaskForm" (ngSubmit)="onSubmit()>
+<section class="container section-one" id="section-one" #sectionOne>
+    <div class="max-width">
+        <div class="section-one-content">
+            <form class="text-center" style="color: black;" (ngSubmit)="onSubmit()" [formGroup]="newTaskForm">
 
-        <div class=" md-form mt-3">
-        <mat-form-field appearance="legacy">
-            <mat-label for="taskDescription" class="form-label" *ngIf="!taskDescription.value">
-                {{ descriptionText }}
-            </mat-label>
-            <input matInput placeholder="{{ placeholder }}" type="text" formControlName="taskDescription" required>
-            <mat-error>A description should be typed!</mat-error>
-        </mat-form-field>
-        <!-- ################# ICON ################# -->
-        <!-- <input type="text" id="materialContactFormName" class="form-control" mdbInput> -->
-
-        <div class="md-form">
-            <h2>
-                Task Priority:
-            </h2>
-            <label>There's no pressure... </label>
-            <mat-slider [max]="3" [min]="1" [step]="1" [value]="1" formControlName="priorityId"></mat-slider>
-            <label>Urgent!</label>
-        </div>
-
-        <div class="row">
-            <mat-form-field appearance="legacy">
-                <span>Status</span>
-                <div class="col-md-12 mx-auto">
-                    <mat-select formControlName="statusId" [options]="statusList"
-                        placeholder="Choose the status of the task">
-                        <!-- <mat-option *ngFor="let status of statusList" [value]="status.id">
-                            {{ status.name }}
-                        </mat-option> -->
-                    </mat-select>
-                </div>
-            </mat-form-field>
-        </div>
-
-        <div class="md-form">
-            <label id="task-types-label">Which kind of task is this one?</label><br />
-            <mat-radio-group formControlName="taskTypeId">
-                <mat-radio-button *ngFor="let type of taskTypes" [value]="type.id">
-                    {{ type.name }}
-                </mat-radio-button>
-            </mat-radio-group>
-        </div>
-
-        <!-- Copy -->
-        <div class="md-form">
-            <label id="tags-label">Select a tag for you task</label>
-            <mat-chip-list formControlName="tagId">
-                <mat-chip #c="matChip" *ngFor="let tag of tags" [value]="tag.id" (click)="tagSelection(c)">
-                    <mat-icon *ngIf="c.selected">check</mat-icon>
-                    {{ tag.name }}
-                </mat-chip>
-            </mat-chip-list>
-        </div>
-
-        <button type="submit" (click)="onSubmit()" rounded="true" class="btn btn-primary" id="submit-button">
-            Submit
-        </button>
-    </form>
-</div>
-
-
-<!-- <div class="create-task-1 container">
-    <div class="card-body">
-        <div class="form-body">
-            <form [formGroup]="newTaskGroup">
-
-                <div class="form-group" id="description-group">
-                    <p>
-                        <mat-form-field appearance="legacy">
+                <div class=" md-form mt-3">
+                    <div class="md-form">
+                        <mat-form-field appearance="legacy" style="margin-top: -4%;">
                             <mat-label for="taskDescription" class="form-label" *ngIf="!taskDescription.value">
                                 {{ descriptionText }}
                             </mat-label>
                             <input matInput placeholder="{{ placeholder }}" type="text"
                                 formControlName="taskDescription" required>
+                            <mat-error>A description should be typed!</mat-error>
                         </mat-form-field>
-                    </p>
-                </div>
+                    </div>
+                    <!-- ################# ICON ################# -->
+                    <!-- <input type="text" id="materialContactFormName" class="form-control" mdbInput> -->
 
-                <div class="form-group" *ngIf="!hide">
-                    <h2>
-                        Task Priority:
-                    </h2>
-                    <label>It's ok... </label>
-                    <mat-slider [max]="3" [min]="1" [step]="1" [value]="1" formControlName="priorityId">
-                    </mat-slider>
-                    <label>Urgent!</label>
+                    <div class="md-form">
+                        <h2>
+                            Task Priority
+                        </h2>
+                        <div class="slider-container">
+                            <label>No rush... </label>
+                            <mat-slider [max]="3" [min]="1" [step]="1" [value]="1" formControlName="priorityId">
+                            </mat-slider>
+                            <label>Urgent!</label>
+                        </div>
+                    </div>
                 </div>
-
             </form>
         </div>
     </div>
-</div>
+    <a (click)="scroll(sectionTwo)"><span></span></a>
+</section>
 
-<div class="create-task-2 container">
-    <div class="card-body">
-        <div class="form-body">
-            <!-- [formGroup]="newTaskGroup"
-            <form (ngSubmit)="onSubmit()">
-                <div class="form-group" *ngIf="!hide">
+<section class="container section-two" id="section-two" #sectionTwo>
+    <div class="max-width">
+        <div class="section-two-content">
+            <form class="text-center" (ngSubmit)="onSubmit()" [formGroup]="newTaskForm">
+                <div class="md-form">
                     <mat-form-field appearance="legacy">
-                        <mat-label>Status</mat-label>
-                        <mat-select formControlName="statusId">
-                            <mat-option *ngFor="let status of statusList" [value]="status.id">
-                                {{ status.name }}
+                        <mat-select formControlName="statusId" placeholder="Choose the status of the task">
+                            <mat-option *ngFor="let status of statusList" [value]="status.value">
+                                {{ status.label }}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
 
-                <div class="form-group" *ngIf="!hide">
-                    <label id="task-types-label">Which kind of task is this one?</label><br />
+                <div class="md-form">
+                    <label id="task-types-label">Which kind of task is this one?</label>
                     <mat-radio-group formControlName="taskTypeId">
-                        <mat-radio-button *ngFor="let type of taskTypes" [value]="type.id">
-                            {{ type.name }}
-                        </mat-radio-button>
+                        <div class="flex-container container">
+                            <mat-radio-button *ngFor="let type of taskTypes" [value]="type.id" style="font-size: 15px;">
+                                <span>{{ type.name }}</span>
+                            </mat-radio-button>
+                        </div>
                     </mat-radio-group>
-                </div>
-
-                <div class="form-group" *ngIf="!hide">
-                    <label id="tags-label">Select a tag for you task</label>
-                    <mat-chip-list formControlName="tagId">
-                        <mat-chip #c="matChip" *ngFor="let tag of tags" [value]="tag.id" (click)="tagSelection(c)">
-                            <mat-icon *ngIf="c.selected">check</mat-icon>
-                            {{ tag.name }}
-                        </mat-chip>
-                    </mat-chip-list>
-                </div>
-                <div class="form-group" id="submit-group">
-                    <button type="submit" (click)="onSubmit()" class="btn btn-primary" id="submit-button">
-                        Submit
-                    </button>
-                    <!-- <button type="submit" [disabled]="!newTaskGroup.valid" (click)="onSubmit()" class="btn btn-primary"
-                        id="submit-button">
-                        Submit
-                    </button>
                 </div>
             </form>
         </div>
     </div>
-</div> -->
+    <a (click)="scroll(sectionThree)"><span></span></a>
+</section>
+
+<section class="container section-three" id="section-three" #sectionThree>
+    <div class="max-width">
+        <div class="section-three-content">
+            <form class="text-center" (ngSubmit)="onSubmit()" [formGroup]="newTaskForm">
+                <div class="md-form">
+                    <label id="tags-label">Select a tag for you task</label>
+                    <mat-chip-list formControlName="tagId">
+                        <div class="flex-container container">
+                            <mat-chip #c="matChip" class="flex-item" *ngFor="let tag of tags" [value]="tag.id"
+                                (click)="tagSelection(c)">
+                                {{ tag.name }}
+                            </mat-chip>
+                        </div>
+                    </mat-chip-list>
+                </div>
+
+                <button type="submit" rounded="true" class="btn btn-primary" id="submit-button">
+                    Submit
+                </button>
+            </form>  
+        </div>
+        <div>
+            <a (click)="scroll(sectionOne)"><span></span>&lt; Scroll to top</a>
+        </div>
+    </div>
+</section>

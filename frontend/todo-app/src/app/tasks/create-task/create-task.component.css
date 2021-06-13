@@ -1,101 +1,163 @@
-.card-body {
-  margin-top: 15%;
+section {
+  letter-spacing: 0.1em;
+  height: 100vh;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000;
 }
 
-.form-group {
-  /* background-color: white; */
-  color: black;
-  margin: 20px 0 100px;
+/* SECTION ONE */
+
+.section-one .max-width,
+.section-two .max-width {
+  width: 100%;
+  margin: auto;
+}
+
+.md-form {
+  margin: 15% auto;
+}
+
+div .mat-form-field.mat-form-field {
   text-align: center;
-  align-items: center;
-}
-
-label{
-  margin: 0 30px;
-  text-align: center;
-}
-
-.form-body {
-  width: 800px;
-}
-
-.mat-form-field.mat-form-field {
-  text-align: center;
-  font-size: 23px;
-  width: 600px;
-}
-
-#task-types-label, #tags-label {
   font-size: 26px;
-  margin: 30px auto;
+  width: 80%;
 }
 
-.mat-radio-button ~ .mat-radio-button {
-  margin-top: 30px;
-  margin-left: 20px;
-}
-
-.mat-slider {
-  /* background-color: white; */
-  color: black;
-  width: 400px;
-}
-
-.mat-chip-list-wrapper {
+.slider-container {
+  width: 70%;
   display: contents;
 }
 
-.containter {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.slider-container mat-slider {
+  width: 65%;
+  margin: auto 10px;
 }
 
-#create-task-1 .create-task-1 {
-  flex-direction: column-reverse;
-  text-align: center;
-  margin: 0 auto;
-  /* height: 100%; */
+.slider-container label {
+  width: 7.5%;
+  font-size: 15px;
 }
 
-#create-task-2 .create-task-2 {
-  flex-direction: column;
+.section-one a,
+.section-two a,
+.section-three a {
+  position: absolute;
+  left: 50%;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+  cursor: pointer;
 }
-/* .form-group#description-group {
-  text-align: center;
-  align-items: center;
+
+.section-one a {
+  bottom: 20px;
+}
+
+.section-two a {
+  bottom: -100%;
+}
+
+.section-three a {
+  bottom: -195%;
+}
+
+.container a:hover {
+  opacity: 0.5;
+}
+
+#section-one a {
+  padding-top: 60px;
+}
+
+#section-one a span,
+#section-two a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: scroll-down 2s infinite;
+  animation: scroll-down 2s infinite;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+@-webkit-keyframes scroll-down {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+/* SECTION TWO */
+
+#section-two a {
+  padding-top: 70px;
+}
+
+#task-types-label,
+#tags-label {
+  font-weight: 300;
   font-size: 26px;
-  left: 50%;
-  top: 50%;
-} */
-/* 
-#description {
-  width: 100%;
-  background: transparent;
-  font-size: 20px;
-  margin-top: 10px;
-  border: none;
-  border-bottom: 1px solid #DAD4CE;
-  animation: move-up 0.7s;
-  animation-fill-mode: forwards;       
 }
 
-#description:focus {
-  outline: 1px solid white;
-  border-bottom: 1px solid #00509d;
-  animation: move-down 0.7s;
-  animation-fill-mode: forwards;       
-} */
+mat-radio-button span {
+  font-size: 15px;
+}
 
-/* .form-group#submit-group {
-  /* margin: 10px auto; */
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-} */
+.flex-container {
+  margin-top: 3%;
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.md-form h2 {
+  font-weight: 300;
+  font-size: 26px;
+  margin-bottom: 2%;
+}
+
+#section-three .flex-container {
+  width: 60%;
+}
+
+#section-three p a {
+  color: green;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#section-three p a:hover {
+  color: #888;
+}

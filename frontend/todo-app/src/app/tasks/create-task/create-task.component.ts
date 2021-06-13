@@ -99,7 +99,7 @@ export class CreateTaskComponent {
   ];
 
   taskDescription = new FormControl('', Validators.required);
-  statusId = new FormControl('');
+  statusId = new FormControl(this.statusList);
   taskTypeId = new FormControl('');
   priorityId = new FormControl('');
   tagId = new FormControl('');
@@ -135,6 +135,10 @@ export class CreateTaskComponent {
 
   onSubmit(): void {
     // this.submitForm(this.taskInProgress);
+  }
+
+  scroll(section: HTMLElement): void {
+    section.scrollIntoView({behavior: 'smooth'})
   }
   
 }
