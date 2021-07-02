@@ -42,8 +42,7 @@ div .mat-form-field.mat-form-field {
 }
 
 .section-one a,
-.section-two a,
-.section-three a {
+.section-two a {
   position: absolute;
   left: 50%;
   z-index: 2;
@@ -62,10 +61,6 @@ div .mat-form-field.mat-form-field {
 
 .section-two a {
   bottom: -100%;
-}
-
-.section-three a {
-  bottom: -195%;
 }
 
 .container a:hover {
@@ -130,7 +125,8 @@ div .mat-form-field.mat-form-field {
   font-size: 26px;
 }
 
-mat-radio-button span {
+mat-radio-button span,
+mat-option span {
   font-size: 15px;
 }
 
@@ -140,6 +136,7 @@ mat-radio-button span {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  text-align: center;
 }
 
 .md-form h2 {
@@ -152,12 +149,40 @@ mat-radio-button span {
   width: 60%;
 }
 
+#section-three #back-top {
+  width: 100%;
+}
+
+.section-three #back-top {
+  position: absolute;
+  left: 50%;
+  bottom: -200%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  cursor: pointer;
+}
+
 #section-three p a {
-  color: green;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 #section-three p a:hover {
   color: #888;
+}
+
+#submit-button {
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 28px 11px 28px;
+  letter-spacing: 0.1em;
+  background: #00509d;
+  transition: 0.5s;
+}
+
+#submit-button:hover {
+  background: #669bbc;
 }
