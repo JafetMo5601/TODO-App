@@ -12,16 +12,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { TaskService } from './services/task.service';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
-  declarations: [    
+  declarations: [
     CreateTaskComponent,
     TasksListComponent,
     HomeComponent,
-    AppComponent
+    AppComponent,
+    SearchBarComponent
   ],
-  imports: [    
+  imports: [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -41,4 +43,4 @@ import { AppComponent } from './app.component';
     TaskService
   ]
 })
-export class AppModule {}
+export class AppModule { }

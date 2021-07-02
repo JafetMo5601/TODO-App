@@ -15,29 +15,18 @@ import { MatChip } from '@angular/material/chips';
 })
 export class CreateTaskComponent {
 
-  tasksAddUrl = 'http://127.0.0.1:5000/tasks/add/';
+  private tasksAddUrl = 'http://127.0.0.1:5000/tasks/add/';
 
   descriptionText: string = 'Put in here what do you have to do?';
   statusText: string = 'How it is going?';
   placeholder: string = 'Describe your task';
 
-  hide: boolean = false;
-
   newTaskForm: FormGroup;
 
   priorities = [
-    {
-      'id': 1,
-      'name': 'Low'
-    },
-    {
-      'id': 2,
-      'name': 'Medium'
-    },
-    {
-      'id': 3,
-      'name': 'High'
-    }
+    {'id': 1, 'name': 'Low'},
+    {'id': 2, 'name': 'Medium'},
+    {'id': 3, 'name': 'High'}
   ];
 
   statusList = [
@@ -49,53 +38,20 @@ export class CreateTaskComponent {
   ];
 
   tags = [
-    {
-      'id': 1,
-      'name': 'New idea'
-    },
-    {
-      'id': 2,
-      'name': 'Front-End enhancement'
-    },
-    {
-      'id': 3,
-      'name': 'Back-End feature'
-    },
-    {
-      'id': 4,
-      'name': 'Database problem'
-    },
-    {
-      'id': 5,
-      'name': 'Technology deprecated'
-    },
-    {
-      'id': 6,
-      'name': 'Database feature'
-    },
-    {
-      'id': 7,
-      'name': 'Front-End issue'
-    },
-    {
-      'id': 8,
-      'name': 'Back-End bug'
-    },
+    {'id': 1, 'name': 'New idea'},
+    {'id': 2, 'name': 'Front-End enhancement'},
+    {'id': 3, 'name': 'Back-End feature'},
+    {'id': 4, 'name': 'Database problem'},
+    {'id': 5, 'name': 'Technology deprecated'},
+    {'id': 6, 'name': 'Database feature'},
+    {'id': 7, 'name': 'Front-End issue'},
+    {'id': 8, 'name': 'Back-End bug'}
   ];
 
   taskTypes = [
-    {
-      'id': 1,
-      'name': 'New project'
-    },
-    {
-      'id': 2, 
-      'name': 'College project'
-    },
-    {
-      'id': 3,
-      'name': 'Ongoing project'
-    }
+    {'id': 1, 'name': 'New project'},
+    {'id': 2, 'name': 'College project'},
+    {'id': 3, 'name': 'Ongoing project'}
   ];
 
   taskDescription = new FormControl('', Validators.required);
@@ -103,8 +59,6 @@ export class CreateTaskComponent {
   taskTypeId = new FormControl('');
   priorityId = new FormControl('');
   tagId = new FormControl('');
-
-  // newTaskGroup: FormGroup;
 
   constructor(
     private taskService: TaskService,
@@ -119,22 +73,18 @@ export class CreateTaskComponent {
       });      
     }
 
-  submitForm(newTask: Task): void {
-    console.log(newTask);
-    // this.taskService.addTask(newTask)
-    // .subscribe(
-    //   (response) => console.log(response),
-    //   (error) => this.taskService.handleError(error)
-    //   );
+  submitForm(): void {
+    console.log(this.newTaskForm.value);
+    this.taskService.addTask(this.newTaskForm.value)
+    .subscribe(
+      (response) => console.log(response),
+      (error) => this.taskService.handleError(error)
+      );
   }
 
   tagSelection(chip: MatChip) {
     chip.toggleSelected();
-    // this.newTaskGroup.controls['tagId'].setValue(chip.value);
-  }
-
-  onSubmit(): void {
-    // this.submitForm(this.taskInProgress);
+    this.newTaskForm.controls['tagId'].setValue(chip.value);
   }
 
   scroll(section: HTMLElement): void {
