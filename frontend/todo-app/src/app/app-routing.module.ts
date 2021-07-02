@@ -12,17 +12,17 @@ const routes: Routes = [
     data: { animation: 'HomePage' }
   },
   {
-    path: 'tasks',
+    path: 'task',
     component: TasksListComponent,
     data: { animation: 'TasksPage' },
   },
   {
-    path: 'tasks/list',
+    path: 'task/list',
     component: TasksListComponent,
     data: { animation: 'TasksPage' },
   },
   {
-    path: 'tasks/add',
+    path: 'task/add',
     component: CreateTaskComponent
   },
   {
