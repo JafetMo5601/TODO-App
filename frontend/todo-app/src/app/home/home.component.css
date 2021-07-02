@@ -11,7 +11,8 @@ a {
 #cover h1 {
   margin: 0 0 10px 0;
   font-size: 48px;
-  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-weight: 500;
   line-height: 56px;
   color: #000000;
 }
@@ -20,13 +21,15 @@ a {
   color: rgba(0, 0, 0, 0.6);
   margin-bottom: 50px;
   font-size: 24px;
+  letter-spacing: 0.1em;
+  font-weight: 400;
 }
 
 #cover .btn-new-task {
   font-family: "Jost", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
   display: inline-block;
   padding: 10px 28px 11px 28px;
   border-radius: 50px;
