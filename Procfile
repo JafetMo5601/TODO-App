@@ -1,1 +1,1 @@
-web: gunicorn backend.entrypoint --preload
+gunicorn --chdir ./backend/ entrypoint:app --preload
