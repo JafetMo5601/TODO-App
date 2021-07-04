@@ -13,6 +13,7 @@ import { TaskService } from './services/task.service';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     TasksListComponent,
     HomeComponent,
     AppComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    FilterPipe
   ],
   imports: [
     BrowserAnimationsModule,
