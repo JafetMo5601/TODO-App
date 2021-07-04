@@ -5,29 +5,25 @@ from flask_cors import CORS
 import json
 import os
 
-from instance.config import app_config
-
 
 mysql = MySQL()
 
 
-def create_app(config_name):
+def create_app():
     app = Flask(__name__, instance_relative_config=True)
-    app = config_app(app, config_name)
+    app = config_app(app)
     mysql = MySQL(app)
     CORS(app)
 
     return app
 
 
-def config_app(app, config):
-    app.config.from_object(app_config[config])
-    app.config.from_pyfile("config.py")
+def config_app(app):
     app.config["CORS_HEADERS"] = "Content-Type"
-    app.config["MYSQL_HOST"] = "localhost"
-    app.config["MYSQL_USER"] = "root"
+    app.config["MYSQL_HOST"] = os.getenv("DBHOST")
+    app.config["MYSQL_USER"] = os.getenv("USER")
     app.config["MYSQL_PASSWORD"] = os.getenv("DBPASSWD")
-    app.config["MYSQL_DB"] = "todo"
+    app.config["MYSQL_DB"] = os.getenv("DBNAME")
     app = register_bp(app)
 
     return app
