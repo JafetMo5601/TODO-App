@@ -1,7 +1,7 @@
 from flask import jsonify
-from app import app
+from backend.app import app
 
-import todoDB
+import backend.todoDB as todoDB
 import os
 
 
@@ -116,4 +116,4 @@ def taskChangeTag():
 
 
 if __name__ == "__main__":
-    app.run(port=5000, threaded=True, debug=os.getenv('DEBUG') == 'True')
+    app.run(port=5000, threaded=True, debug=os.getenv("DEBUG") == "True")

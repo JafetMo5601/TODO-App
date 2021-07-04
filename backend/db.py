@@ -1,5 +1,5 @@
 from flask_mysqldb import MySQL
-from app import app
+from .app import app
 
 import os
 
