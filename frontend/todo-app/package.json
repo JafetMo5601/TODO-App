@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "ng serve --proxy-config scr/proxy.conf.json",
+    "build": "ng build --aot --prod",
+    "test": "echo \"Error: no test... minimal project\" && exit 1",
+    "lint": "echo \"Error: no test... minimal project\" && exit 1",
+    "e2e": "echo \"Error: no test... minimal project\" && exit 1"
   },
   "private": true,
   "dependencies": {

@@ -1,1 +1,1 @@
-web: gunicorn backend.entrypoint --preload
+web: gunicorn main:app --preload

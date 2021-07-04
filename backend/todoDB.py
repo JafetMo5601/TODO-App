@@ -1,4 +1,4 @@
-from app import mysql
+from db import mysql
 import json
 
 
@@ -7,14 +7,14 @@ class Requests:
         self.mysql = mysql
         self.conn = self.mysql.connection
         self.cur = self.conn.cursor()
-    
+
     def dataProcessing(self, rv):
         if rv != ():
             data, row_headers = [], [x[0] for x in self.cur.description]
             for result in rv:
                 data.append(dict(zip(row_headers, result)))
         else:
-            data = 'Executed correctly!'
+            data = "Executed correctly!"
         return data
 
     def query(self, sp):
