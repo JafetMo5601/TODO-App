@@ -1,5 +1,7 @@
 import os
 
+print(os.getcwd())
+
 from app import create_app
 
 
