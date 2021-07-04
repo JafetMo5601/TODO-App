@@ -1,11 +1,11 @@
 <div class="flex-container">
     <div class='wrapper-container'>
         <div class='row'>
-            <app-search-bar></app-search-bar>
+            <app-search-bar #child></app-search-bar>
         </div>
 
         <div class="panels-container">
-            <mat-expansion-panel hideToggle *ngFor='let task of tasks'>
+            <mat-expansion-panel hideToggle *ngFor='let task of tasks | filter: child.filter'>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         {{ task.statusId }}

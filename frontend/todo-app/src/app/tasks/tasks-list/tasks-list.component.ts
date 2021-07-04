@@ -12,8 +12,7 @@ export class TasksListComponent implements OnInit {
   pageTitle: string = 'Product List';
   tasks: Task[] = [];
   filteredTasks: Task[] = [];
-
-  private _tasksFilter: string = '';
+  receivingFilter: string = '';
 
   constructor(private taskService: TaskService) {}
 
@@ -21,25 +20,6 @@ export class TasksListComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
   }
-
-
-  set tasksFilter(substring: string) {
-    this._tasksFilter = substring;
-    this.filteredTasks = this.performFilter(substring);
-  }
-
-
-  get tasksFilter(): string {
-    return this._tasksFilter;
-  }
-
-
-  performFilter(filterBy: string): Task[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.tasks.filter((task: Task) =>
-      task.taskDescription.toLocaleLowerCase().includes(filterBy));
-  }
-
 
   generateTasksList(tasks: any) {
     for (let object = 0; object < tasks.length; object++) {
@@ -54,5 +34,10 @@ export class TasksListComponent implements OnInit {
       (tasks: any) => (this.generateTasksList(tasks)),
       (error) => console.log(error)
       );
+  }
+
+  filterHandler(filter: any) {
+    this.receivingFilter = filter;
+    console.log(this.receivingFilter);
   }
 }
