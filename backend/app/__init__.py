@@ -21,7 +21,7 @@ def create_app():
 def config_app(app):
     app.config["CORS_HEADERS"] = "Content-Type"
     app.config["MYSQL_HOST"] = os.getenv("DBHOST")
-    app.config["MYSQL_USER"] = os.getenv("USER")
+    app.config["MYSQL_USER"] = os.getenv("DBUSER")
     app.config["MYSQL_PASSWORD"] = os.getenv("DBPASSWD")
     app.config["MYSQL_DB"] = os.getenv("DBNAME")
     app = register_bp(app)
