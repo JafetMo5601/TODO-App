@@ -14,12 +14,16 @@ const httpOptions = {
 @Injectable()
 export class TaskService {
 
-  tasksListUrl = 'http://127.0.0.1:5000/tasks/list/';
-  tasksAddUrl = 'http://127.0.0.1:5000/tasks/add/';
+  tasksListUrl = 'http://127.0.0.1:5000/api/tasks/list/';
+  tasksAddUrl = 'http://127.0.0.1:5000/api/tasks/add/';
 
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Task[]>{
+  private static _handleError(err: HttpErrorResponse | any) {
+    return Observable.throw(err.message || 'Error: Unable to complete request.');
+  }
+
+  getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.tasksListUrl);
   }
 
