@@ -3,7 +3,7 @@ import os
 from app import create_app
 
 
-config_name = "development"  # = os.environ.get('FLASK_CONFIG')
+config_name = os.environ.get('FLASK_CONFIG')
 app = create_app(config_name)
 
 
