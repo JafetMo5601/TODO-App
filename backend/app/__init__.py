@@ -10,7 +10,13 @@ mysql = MySQL()
 
 
 def create_app():
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(
+        __name__,
+        instance_relative_config=True,
+        static_url_path="",
+        static_folder="dist",
+        template_folder="dist",
+    )
     app = config_app(app)
     mysql = MySQL(app)
     CORS(app)
@@ -37,5 +43,9 @@ def register_bp(app):
     from app.admin import admin_bp
 
     app.register_blueprint(admin_bp)
+
+    from app.home import home_bp
+
+    app.register_blueprint(home_bp)
 
     return app
